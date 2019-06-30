@@ -1,3 +1,4 @@
+
 class SessionsController < ApplicationController
 
   def new
@@ -12,5 +13,11 @@ class SessionsController < ApplicationController
       flash.now[:danger] = '認証に失敗しました。'
       render :new
     end
+  end
+
+  def destroy
+    log_out
+    flash[:success] = 'ログアウトしました。'
+    redirect_to root_url
   end
 end
